@@ -1,0 +1,24 @@
+// Основной модуль
+import gulp from "gulp";
+
+// Импорт путей
+import { path } from "./gulp/config/path.js";
+
+// Передаем значения в глобальную переменную
+global.app = {
+  path: path,
+  gulp: gulp
+}
+
+// Импорт задач
+import { copy } from "./gulp/tasks/copy.js";
+import { reset } from "./gulp/tasks/reset.js";
+
+// Наблюдатель изменений в файлах
+function watcher() {
+  gulp.watch(path.watch.files, copy)
+}
+
+// Построение сценариев 
+const dev = gulp.series(reset, copy, watcher);
+gulp.task('default', dev);

@@ -5,14 +5,16 @@ const rootFolder = nodePath.basename(nodePath.resolve());
 const buildFoleder = `./dist`; // Можно использовать rootFolder для названия проекта
 const srcFolder = `./src`;
 
-const path = {
+export const path = {
   build: {
     files: `${buildFoleder}/files/`
   },
   src: {
     files: `${srcFolder}/files/**/*.*`,
   },
-  watch: {},
+  watch: {
+    files: `${srcFolder}/files/**/*.*`
+  },
   clean: buildFoleder,
   buildFoleder: buildFoleder,
   srcFolder: srcFolder,
